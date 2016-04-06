@@ -13,7 +13,13 @@ class ItemsController < ApplicationController
   end
 
   def show
+    
   end
+  
+  def item_params
+	  params.require(:item).permit(:name, :image)
+  end
+  
 
   private
   def set_item
