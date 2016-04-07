@@ -4,7 +4,7 @@
       <div class="item-box">
         <div class="image">
           <div class="img-wrap">
-            <% if item.get('LargeImage') %>
+            <% if item.get("LargeImage/URL").present? %>
               <%= image_tag item.get('LargeImage/URL') , alt: item.get('ItemAttributes/Title') %>
             <% else %>
               <%= image_tag("no-image.png" , alt: item.get('ItemAttributes/Title')) %>
