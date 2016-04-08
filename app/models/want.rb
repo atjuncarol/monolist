@@ -1,2 +1,3 @@
 class Want < Ownership
+
 end
