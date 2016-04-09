@@ -12,7 +12,7 @@ class OwnershipsController < ApplicationController
     if @item.new_record?
       begin
         # TODO 商品情報の取得 Amazon::Ecs.item_lookupを用いてください
-        response = Amazon::Ecs.item_lookup(ARGV[0], { response_group: 'Large', :country => 'jp' })
+        response = Amazon::Ecs.item_lookup(params[:asin], { response_group: 'Large', :country => 'jp' })
       rescue Amazon::RequestError => e
         return render :js => "alert('#{e.message}')"
       end
@@ -33,6 +33,11 @@ class OwnershipsController < ApplicationController
     if (params[:type] == "Have")
         current_user.have(@item)
     elsif (params[:type] == "Want")
+        
+        
+       # binding.pry
+        
+        
         current_user.want(@item)
     end
   end
