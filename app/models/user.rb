@@ -44,13 +44,11 @@ class User < ActiveRecord::Base
   end
 
   def have?(item)
-    haves.include?(item)
+    have_items.include?(item)
   end
-
+  
   def want(item)
-    # binding.pry
     wants.find_or_create_by(item_id: item.id)
-    
   end
 
   def unwant(item)
@@ -59,6 +57,6 @@ class User < ActiveRecord::Base
   end
 
   def want?(item)
-    want.include?(item)	
+    want_items.include?(item)	
   end
 end
