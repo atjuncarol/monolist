@@ -4,13 +4,18 @@
       <div class="image">
         <div class="img-wrap">
           <% #TODO 商品イメージ %>
-          <%= image_tag("no-image.png" , alt: @item.title) %>
-        </div>
+            <% if @item.present? %>
+              <%= image_tag(@item.large_image) %>
+            <% else %>
+              <%= image_tag("no-image.png" , alt: item.get('ItemAttributes/Title')) %>
+            <% end %>
+       </div>
       </div>
       <div class="title">
         <% #TODO 商品タイトル %>
-        仮タイトル
+         <%= @item.title %>
       </div>
+      
       <%= render 'action' , item: @item %>
     </div>
     <div class="item-single-side">
@@ -18,6 +23,9 @@
         <h4 class="side-box-title">Haveしたユーザー</h4>
         <div class="side-box-body">
           <% # TODO Haveしたユーザー一覧 %>
+          <% @item.have_users.each do |user| %>
+            <%= render partial: 'user_list', locals: { user: user } %>
+          <% end %>
 
         </div>
       </div>
@@ -25,11 +33,16 @@
         <h4 class="side-box-title">Wantしたユーザー</h4>
         <div class="side-box-body">
           <% # TODO Wantしたユーザー一覧 %>
+          <% @item.want_users.each do |user| %>
+            <%= render partial: 'user_list', locals: { user: user } %>
+          <% end %>
+          
         </div>
       </div>
       <div class="text-center">
         <% #TODO 正しいリンク先に %>
-        <%= link_to(image_tag("amazon-button.png", {alt: "Amazon詳細ページへ"}), '#') %>
+        <%= link_to(image_tag("amazon-button.png", {alt: "Amazon詳細ページへ"}), @item.detail_page_url) %>
+        
       </div>
     </div>
   </div>
