@@ -28,8 +28,6 @@ class UsersController < ApplicationController
                                  :password_confirmation)
   end
   
-  def index
-  end
-  
+
   
 end
