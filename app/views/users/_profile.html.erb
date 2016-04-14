@@ -1,3 +1,11 @@
+<% content_for :head do %>
+<title><%= @user.name %>-Monolist</title>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="description" content= <%= @user.name %>"のモノページ。<%= @user.name %>"の欲しいモノ、持ってるモノを表示しています。
+</head>
+<% end %>
+
 <div class="user-profile">
   <div class="icon">
     <%= gravatar_for user, size: 100 %>
@@ -33,7 +41,7 @@
       </li>
     </ul>
 
-    <%= render 'follow_form' if logged_in? && @user != current_user %>
+<%= render 'follow_form' if logged_in? && @user != current_user %>
 
   </div>
 </div>
