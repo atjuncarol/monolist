@@ -8,25 +8,23 @@
 
 <% end %>
 
-   
 <div class="container">
   <div class="container-inner inner-sm clearfix">
     <div class="item-single-main">
       <div class="image">
         <div class="img-wrap">
           <% #TODO 商品イメージ %>
-            <% if @item.present? %>
-              <%= image_tag(@item.large_image) %>
+            <% if @item.large_image %>
+              <%= image_tag(@item.large_image, alt: @item.title) %>
             <% else %>
-              <%= image_tag("no-image.png" , alt: item.get('ItemAttributes/Title')) %>
+              <%= image_tag('no-image.png' , alt: @item.title) %>
             <% end %>
-       </div>
+        </div>
       </div>
       <div class="title">
         <% #TODO 商品タイトル %>
-         <%= @item.title %>
+        <%= @item.title %>
       </div>
-      
       <%= render 'action' , item: @item %>
     </div>
     <div class="item-single-side">
@@ -35,9 +33,8 @@
         <div class="side-box-body">
           <% # TODO Haveしたユーザー一覧 %>
           <% @item.have_users.each do |user| %>
-            <%= render partial: 'user_list', locals: { user: user } %>
+            <%= link_to gravatar_for(user, size: 30), user %>
           <% end %>
-
         </div>
       </div>
       <div class="side-box">
@@ -45,15 +42,13 @@
         <div class="side-box-body">
           <% # TODO Wantしたユーザー一覧 %>
           <% @item.want_users.each do |user| %>
-            <%= render partial: 'user_list', locals: { user: user } %>
+            <%= link_to gravatar_for(user, size: 30), user %>
           <% end %>
-          
         </div>
       </div>
       <div class="text-center">
         <% #TODO 正しいリンク先に %>
         <%= link_to(image_tag("amazon-button.png", {alt: "Amazon詳細ページへ"}), @item.detail_page_url) %>
-        
       </div>
     </div>
   </div>
