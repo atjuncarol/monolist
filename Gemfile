@@ -56,5 +56,7 @@ group :development, :test do
   gem 'spring'
 
   gem 'pry-rails'
+  
+  gem 'pry-byebug'
 end
 
