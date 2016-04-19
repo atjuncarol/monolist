@@ -1,5 +1,8 @@
 <div class="container">
   <div class="container-inner inner-default clearfix">
+
+<h1>Have Ranking</h1>
+  	
 <% @rankings.each_with_index do |(item,count), rank| %>
 
 	<% if item != nil %>
@@ -7,7 +10,7 @@
 	<h4><%= Item.find(item).title %></h4>
 	<% if type = "have" %>
        <span style="color:blue">
-		<p>Haveしている人の数:<%= count %></p>
+		<p>Have している人の数:<%= count %></p>
 		</span>
 	<% end %>
 	<%= image_tag(Item.find(item).medium_image) %>

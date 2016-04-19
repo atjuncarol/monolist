@@ -1,18 +1,22 @@
 <div class="container">
   <div class="container-inner inner-default clearfix">
-<% @rankings.each_with_index do |(item,count), rank| %>
+   <h1>Want Ranking</h1>
 
+	<% @rankings.each_with_index do |(item,count), rank| %>
 	<% if item != nil %>
 	<h3>No.<%= rank+1 %></h3>
 	<h4><%= Item.find(item).title %></h4>
 	<% if type = "have" %>
        <span style="color:blue">
-		<p>Wantしている人の数:<%= count %></p>
+		<p>Want している人の数:<%= count %></p>
 		</span>
 	<% end %>
-	<%= image_tag(Item.find(item).medium_image) %>
+	
+	<%# = link_to Item.find(params[:id]) do %>
+		<%= image_tag(Item.find(item).medium_image) %>
+	<%# end %>
+	
  <% end %>
 <% end %>
-
-</div>
+	</div>
 </div>
