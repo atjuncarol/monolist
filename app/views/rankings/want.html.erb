@@ -12,9 +12,10 @@
 		</span>
 	<% end %>
 	
-	<%= image_tag(Item.find(item).medium_image) %>
-	
+	<%= link_to Item.find(item) do %>
+    <%= image_tag(Item.find(item).medium_image) %>
+   	<% end %>
+  <% end %>
  <% end %>
-<% end %>
-	</div>
+  </div>
 </div>
